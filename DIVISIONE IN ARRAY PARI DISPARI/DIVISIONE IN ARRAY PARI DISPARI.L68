@@ -1,0 +1,57 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 12/11/2020 20:43:25
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000  41F9 0000103E              8  START:   LEA ARRAY , A0     *SALVATAGGIO DELL'INDIRIZZO DEGLI ARRAY NEI REGISTRI D'INDIRIZZO 
+00001006  43F9 00001052              9           LEA ARRAYP , A1
+0000100C  45F9 00001066             10           LEA ARRAYD , A2
+00001012  303C 0009                 11           MOVE #LEN , D0    *D0 = LUNGHEZZA ARRAY
+00001016                            12  LOOP:
+00001016  3218                      13           MOVE (A0)+ , D1     *ELEMENTO DELL'ARRAY SALVATO IN D1 E SUCCESSIVO INCREMENTO DELL'INDIRIZZO
+00001018  0801 0000                 14           BTST #0 , D1      *BITTEST : 1 = DISPARI , 0 = PARI
+0000101C  6600 0010                 15           BNE DISPARI       *SALTO A DISPARI SE FLAG Z = 1
+00001020  5279 0000107A             16           ADD #1 , LENP     
+00001026  32C1                      17           MOVE D1 , (A1)+   *SALVATAGGIO DDEL VALORE NELL'ARRAY PARI
+00001028  4EF9 00001036             18           JMP TEST      *SALTO ALL'ETICHETTA TEST
+0000102E                            19           
+0000102E  5279 0000107C             20  DISPARI: ADD #1 , LEND   
+00001034  34C1                      21           MOVE D1 , (A2)+   *SALVATAGGIO DDEL VALORE NELL'ARRAY PARI
+00001036                            22  
+00001036  51C8 FFDE                 23  TEST:    DBRA D0 , LOOP    *SALTO A LOOP SE D0 (LEN) != -1 E INCREMENTO DI D0
+0000103A                            24  
+0000103A  FFFF FFFF                 25  END    SIMHALT             ; halt simulator
+0000103E                            26  
+0000103E= 0001 0002 0003 0...       27  ARRAY DC.W 1,2,3,4,5,6,7,8,9,10
+00001052                            28  ARRAYP DS.W 10
+00001066                            29  ARRAYD DS.W 10
+0000107A  =00000009                 30  LEN EQU 9   *LUNGHEZZA
+0000107A                            31  LENP DS.W 1
+0000107C                            32  LEND DS.W 1
+0000107E                            33  
+0000107E                            34      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+ARRAY               103E
+ARRAYD              1066
+ARRAYP              1052
+DISPARI             102E
+END                 103A
+LEN                 9
+LEND                107C
+LENP                107A
+LOOP                1016
+START               1000
+TEST                1036

@@ -1,0 +1,45 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 12/11/2020 17:05:13
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000  4240                       8  START:   CLR D0
+00001002  3039 0000107E              9           MOVE LEN , D0
+00001008  3239 0000107C             10           MOVE SUM , D1
+0000100E  43F9 0000102C             11           LEA ARRAYX , A1
+00001014  45F9 00001054             12           LEA ARRAYY , A2
+0000101A                            13           
+0000101A  3231 200A                 14  LOOP:   MOVE 10(A1,D2) , D1
+0000101E  C2F2 200A                 15          MULU 10(A2,D2) , D1
+00001022  5442                      16          ADD #2 , D2
+00001024  51C8 FFF4                 17          DBRA D0 , LOOP          
+00001028                            18  
+00001028                            19  END
+00001028  FFFF FFFF                 20      SIMHALT  
+0000102C= 0001 0002 0003 0...       21  ARRAYX DC 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20     
+00001054= 0001 0002 0003 0...       22  ARRAYY DC 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 
+0000107C                            23  SUM DS 1
+0000107E= 000E                      24  LEN DC 14      
+00001080                            25  
+00001080                            26      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+ARRAYX              102C
+ARRAYY              1054
+END                 1028
+LEN                 107E
+LOOP                101A
+START               1000
+SUM                 107C

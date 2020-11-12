@@ -1,0 +1,41 @@
+00008000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 12/11/2020 20:57:48
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : SOMMA DEGLI ELEMENTI DI UN ARRAY
+00000000                             3  * Written by : DAVIDE DE ANGELIS
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00008000                             7      ORG    $8000
+00008000  41F9 0000801E              8  START:  LEA ARRAY , A0  *SALVATAGGIO DELL'INDIRIZZO DELL'ARRAY IN A0
+00008006  303C 0009                  9          MOVE #N , D0  *D0 = LUNGHEZZA ARRAY
+0000800A  4241                      10          CLR D1     
+0000800C                            11  LOOP:
+0000800C  D258                      12          ADD (A0)+ , D1 *SOMMA DEL VALORE DELL 'ARRAY CON D0 (SOMMA) E INCREMENTO DELL ' INDIRIZZO
+0000800E  51C8 FFFC                 13          DBRA D0 , LOOP  *SALTO A LOOP SE D0 (N) != -1 E DECREMENTO DI D0
+00008012  33C1 00008032             14          MOVE D1 , SOMMA *SALVATAGGIO DI D0 (SOMMA DELL'ARRAY) IN SOMMA
+00008018  4EF9 00008034             15          JMP END
+0000801E                            16  
+0000801E                            17              
+0000801E= 0001 0002 0003 0...       18  ARRAY DC 1,2,3,4,5,6,7,8,9,10
+00008032  =00000009                 19  N EQU 9  *LUNGHEZZA
+00008032                            20  SOMMA DS 1
+00008034                            21  
+00008034                            22  END
+00008034                            23      END    START        
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+ARRAY               801E
+END                 8034
+LOOP                800C
+N                   9
+SOMMA               8032
+START               8000

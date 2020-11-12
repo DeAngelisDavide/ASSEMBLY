@@ -1,0 +1,39 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 05/11/2020 16:18:28
+
+00001F40                             1      ORG 8000
+00001F40= 0004                       2  Q DC  $4
+00001F42                             3  X DS  1   *STO ALLOCANDO UN BYTE
+00001F44= 0003                       4  Y DC  $3
+00001F46                             5    
+00001000                             6      ORG    $1000
+00001000  3038 1F40                  7  START:  MOVE Q,D0 
+00001004  0C40 0004                  8          CMPI  #4,D0
+00001008  6600 0010                  9          BNE ELSE
+0000100C  323C 0005                 10          MOVE #5,D1
+00001010  31C1 1F42                 11          MOVE D1,X
+00001014  4EF9 00001026             12          JMP END
+0000101A                            13  
+0000101A                            14  
+0000101A  3238 1F44                 15  ELSE:   MOVE Y,D1
+0000101E  31C1 1F42                 16          MOVE D1,X
+00001022                            17  
+00001022                            18  
+00001022  FFFF FFFF                 19      SIMHALT            
+00001026                            20  END
+00001026                            21      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+ELSE                101A
+END                 1026
+Q                   1F40
+START               1000
+X                   1F42
+Y                   1F44

@@ -1,0 +1,35 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 03/11/2020 11:47:14
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000  1039 00001016              8  START:    MOVE.B VAL1, D0
+00001006  D039 00001017              9            ADD.B VAL2, D0              ; first instruction of program
+0000100C  13C0 00001018             10            MOVE.B D0, RES
+00001012                            11  
+00001012  FFFF FFFF                 12      SIMHALT             ; halt simulator
+00001016                            13  
+00001016                            14  * Put variables and constants here
+00001016= 0F                        15  VAL1 DC.B $0F
+00001017= 03                        16  VAL2 DC.B $03
+00001018                            17  RES DS.B 1
+00001019                            18  
+00001019                            19      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+RES                 1018
+START               1000
+VAL1                1016
+VAL2                1017
